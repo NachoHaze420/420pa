@@ -16,20 +16,39 @@ body {
     background: url(imagenes/Diseño\ sin\ título\ \(18\).png) no-repeat;
     background-size: cover;
     background-position: center;
-
+    position: relative;
 }
 
 
-header {
+header{
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.header_wrp{
+    width: 100%;
+    max-width: 1000px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    z-index: 99;
+    position: absolute;
+    padding: 30px;
+}
+
+.header_wrp_top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.header_wrp_right{
+    display: none;
+}
+.header_wrp_buttom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
@@ -39,13 +58,22 @@ header {
 
 }
 
+.navigation{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.menu .navigation a{
+    color: black;
+}
+
 .navigation a {
     position: relative;
     font-size: 1.1em;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 40px;
 }
 
 .navigation a::after {
@@ -70,7 +98,7 @@ header {
 
 }
 
-.navigation .btnLogin-popup {
+.navigation .btnLogin-popup{
     width: 130px;
     height: 50px;
     background: transparent;
@@ -81,9 +109,7 @@ header {
     font-size: 1.1em;
     color: #fff;
     font-weight: 500;
-    margin-left: 40px;
     transition: .5s;
-
 }
 
 .navigation .btnLogin-popup:hover {
@@ -187,8 +213,13 @@ header {
     transition: .5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.input-box-password:focus~label,
+.input-box-password:valid~label{
+    top: -5px;
+}
+
+.input-box-email:focus~label,
+.input-box-email:valid~label{
     top: -5px;
 }
 
@@ -267,5 +298,116 @@ header {
 .login-register p a:hover {
     text-decoration: underline;
 }
+/* Arrancan estilos hamburguesa*/
+.hamburguesa{
+    width: 40px; /* Ancho del elemento*/
+    height: 30px; /* alto del elemento*/
+    display: flex;
+    flex-direction: column; /* pone los 3 span uno abajo del otro pero con el flex*/
+    justify-content: space-between;
+    display: none;
+}
 
 
+.hamburguesa span{
+    width: 100%;
+    height: 4px;
+    background-color: white;
+}
+
+/* Arranca estiolos Menu*/
+
+.menu{
+    height: 100vh;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+}
+
+.menu_wrp{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.menu_cross{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 15px;
+}
+.menu_cross svg{
+    width: 100%;
+    height: 100%;
+}
+
+.menu_cross span:first-child{
+    display: flex;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    transform: rotateX('45deg');
+}
+
+.menu_links{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+}
+
+.menu_links_item{
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.menu .btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: black;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}
+
+.menu.open{
+ transform: translateX(0)!important;
+ transition: 1s;
+}
+
+
+@media (max-width: 1200px) { /* Esto es para ajustar estilos dependiendo la resolucion en este caso funciona de 0 hasta 1200px */
+    
+.header_wrp{
+    flex-direction: column;
+}
+.header_wrp_right{
+    display: flex;
+}
+.hamburguesa{
+    display: flex;
+}
+
+.navigation{
+    display: none;
+}
+}
